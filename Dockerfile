@@ -104,11 +104,11 @@ RUN cd ${HOME}/toolkit && \
 RUN cd ${HOME}/toolkit && \
     git clone https://github.com/aboul3la/Sublist3r.git && \
     cd Sublist3r/ && \
-    pip install -r requirements.txt && \
+    python -m pip install -r requirements.txt && \
     ln -s ${HOME}/toolkit/Sublist3r/sublist3r.py /usr/local/bin/sublist3r
 
 # wfuzz
-RUN pip install wfuzz
+RUN python -m pip install wfuzz
 
 # seclists
 RUN cd ${HOME}/wordlists && \
@@ -160,7 +160,7 @@ RUN cd ${HOME}/toolkit && \
 RUN cd ${HOME}/toolkit && \
     git clone https://github.com/infosec-au/altdns.git && \
     cd altdns && \
-    pip install -r requirements.txt && \
+    python -m pip install -r requirements.txt && \
     chmod +x setup.py && \
     python setup.py install
 
@@ -191,7 +191,7 @@ RUN cd ${HOME}/toolkit && \
 RUN cd ${HOME}/toolkit && \
     git clone https://github.com/AlexisAhmed/theHarvester.git && \
     cd theHarvester && \
-    python3.7 -m pip install -r requirements.txt && \
+    python3 -m pip install -r requirements.txt && \
     chmod +x theHarvester.py && \
     ln -sf ${HOME}/toolkit/theHarvester/theHarvester.py /usr/local/bin/theharvester
 
@@ -199,7 +199,7 @@ RUN cd ${HOME}/toolkit && \
 RUN cd ${HOME}/toolkit && \
     git clone https://github.com/christophetd/CloudFlair.git && \
     cd CloudFlair && \
-    pip install -r requirements.txt && \
+    python -m pip install -r requirements.txt && \
     chmod +x cloudflair.py && \
     ln -sf ${HOME}/toolkit/CloudFlair/cloudflair.py /usr/local/bin/cloudflair
 
