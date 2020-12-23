@@ -1,4 +1,4 @@
-FROM kalilinux/kali-rolling:latest
+FROM ubuntu:latest
 
 LABEL maintainer="shizonic <realtiaz@gmail.com>"
 
@@ -13,8 +13,8 @@ RUN mkdir ${HOME}/toolkit && \
     mkdir ${HOME}/wordlists
 
 # Install Essentials
-RUN apt update && \
-    apt install -y --no-install-recommends \
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
     build-essential \
     tmux \
     gcc \
@@ -41,8 +41,8 @@ RUN apt update && \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Dependencies
-RUN apt update && \
-    apt install -y --no-install-recommends \
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
     # sqlmap
     sqlmap \
     # dirb
