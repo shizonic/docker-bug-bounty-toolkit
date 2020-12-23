@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM kalilinux/kali-rolling:latest
 
 LABEL maintainer="shizonic <realtiaz@gmail.com>"
 
@@ -29,7 +29,6 @@ RUN apt-get update && \
     nmap \
     whois \
     python \
-    python-pip \
     python3 \
     python3-pip \
     perl \
