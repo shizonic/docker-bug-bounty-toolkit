@@ -1,6 +1,6 @@
-FROM ubuntu:18.04
+FROM kalilinux/kali-rolling:latest
 
-LABEL maintainer="Alexis Ahmed"
+LABEL maintainer="shizonic <realtiaz@gmail.com>"
 
 # Environment Variables
 ENV HOME /root
@@ -110,7 +110,7 @@ RUN pip install wfuzz
 
 # seclists
 RUN cd ${HOME}/wordlists && \
-    git clone --depth 1 https://github.com/danielmiessler/SecLists.git 
+    git clone --depth 1 https://github.com/danielmiessler/SecLists.git
 
 # knock
 RUN cd ${HOME}/toolkit && \
@@ -140,7 +140,7 @@ RUN cd ${HOME}/toolkit && \
     gem install bundler && bundle install --without test && \
     gem install wpscan
 
-# commix 
+# commix
 RUN cd ${HOME}/toolkit && \
     git clone https://github.com/commixproject/commix.git && \
     cd commix && \
@@ -152,7 +152,7 @@ RUN cd ${HOME}/toolkit && \
     git clone https://github.com/robertdavidgraham/masscan.git && \
     cd masscan && \
     make && \
-    ln -sf ${HOME}/toolkit/masscan/bin/masscan /usr/local/bin/masscan    
+    ln -sf ${HOME}/toolkit/masscan/bin/masscan /usr/local/bin/masscan
 
 # altdns
 RUN cd ${HOME}/toolkit && \
@@ -206,7 +206,7 @@ RUN cd ${HOME}/toolkit && \
     git clone https://github.com/rezasp/joomscan.git && \
     cd joomscan/ && \
     chmod +x joomscan.pl
-COPY joomscan.sh /opt
+COPY files/joomscan.sh /opt
 RUN chmod +x /opt/joomscan.sh && \
     ln -sf /opt/joomscan.sh /usr/local/bin/joomscan
 
@@ -215,7 +215,7 @@ RUN cd /opt && \
     wget https://dl.google.com/go/go1.13.3.linux-amd64.tar.gz && \
     tar -xvf go1.13.3.linux-amd64.tar.gz && \
     rm -rf /opt/go1.13.3.linux-amd64.tar.gz && \
-    mv go /usr/local 
+    mv go /usr/local
 ENV GOROOT /usr/local/go
 ENV GOPATH /root/go
 ENV PATH ${GOPATH}/bin:${GOROOT}/bin:${PATH}
